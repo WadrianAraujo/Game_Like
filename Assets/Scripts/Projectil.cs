@@ -7,7 +7,7 @@ public class Projectil : MonoBehaviour
 {
     [SerializeField] private float speed;
     private IEnumerator corrotine;
-    [SerializeField] private float damage;
+    [SerializeField] private float damageBullet;
     
 
     // Update is called once per frame
@@ -37,7 +37,8 @@ public class Projectil : MonoBehaviour
     {
         if (other.CompareTag(tags.Enemy.ToString()))
         {
-            Destroy(other.gameObject);
+            other.GetComponent<Enemy>().TakeDamage(damageBullet);
+            gameObject.SetActive(false);    
         }
     }
 }
